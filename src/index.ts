@@ -175,9 +175,10 @@ chat
 
       const queryOpts: any = {};
       if (opts.limit) queryOpts.limit = opts.limit;
-      if (opts.favorites) queryOpts.isFavorite = true;
+      if (opts.favorites) queryOpts.favorite = true;
 
-      const chats = await client.chats.find(queryOpts);
+      const response = await client.chats.find(queryOpts);
+      const chats = response.data || [];
 
       if (opts.json) {
         console.log(JSON.stringify(chats, null, 2));
@@ -188,8 +189,8 @@ chat
         }
 
         for (const chat of chats) {
-          const favorite = chat.isFavorite ? " ⭐" : "";
-          const privacy = chat.isPrivate ? " 🔒" : "";
+          const favorite = chat.favorite ? " ⭐" : "";
+          const privacy = chat.privacy === "private" ? " 🔒" : "";
           console.log(
             `${chat.id} - ${chat.name}${favorite}${privacy} (${new Date(
               chat.createdAt
