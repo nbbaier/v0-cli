@@ -1,0 +1,15 @@
+{
+  "name": "v0-cli",
+  "module": "index.ts",
+  "type": "module",
+  "private": true,
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "v0-sdk": "^0.16.1"
+  }
+}
