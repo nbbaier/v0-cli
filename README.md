@@ -1,6 +1,6 @@
 # v0-cli
 
-A CLI tool for managing [v0.dev](https://v0.dev) chats and projects.
+A CLI tool for managing [v0](https://v0.app) chats.
 
 ## Installation
 
