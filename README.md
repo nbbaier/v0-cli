@@ -5,7 +5,9 @@ A CLI tool for managing [v0.dev](https://v0.dev) chats and projects.
 ## Installation
 
 ```bash
-bun install
+$ git clone https://github.com/nbbaier/v0-cli.git
+$ cd v0-cli
+$ bun install
 ```
 
 Link the CLI globally:
