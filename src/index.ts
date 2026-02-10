@@ -257,6 +257,8 @@ chat
       }
 
       const initOpts: any = {
+        type: 'files',
+        name: `Chat from ${files.length} file${files.length > 1 ? 's' : ''}`,
         files: files.map((f) => ({ name: f.name, content: f.content })),
       };
 
@@ -271,14 +273,10 @@ chat
 
       // If --message is provided, send a follow-up message
       if (opts.message) {
-        const messageOpts: any = {
+        const messageResult = await client.chats.sendMessage({
+          chatId: result.id,
           message: opts.message,
-        };
-
-        const messageResult = await client.chats.sendMessage(
-          result.id,
-          messageOpts
-        );
+        });
         if (messageResult instanceof ReadableStream) {
           throw new Error("Unexpected stream response");
         }
@@ -305,7 +303,7 @@ program
       const client = await getClient();
 
       // Validate project exists
-      await client.projects.get(projectId);
+      await client.projects.getById({ projectId });
 
       await writeProjectLink(projectId);
       console.log(`Linked to project: ${projectId}`);
