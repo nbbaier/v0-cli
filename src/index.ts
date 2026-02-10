@@ -222,7 +222,7 @@ chat
   .action(
     withErrorHandling(async (chatId) => {
       const client = await getClient();
-      await client.chats.delete(chatId);
+      await client.chats.delete({ chatId });
       console.log(`Chat ${chatId} deleted`);
     })
   );
