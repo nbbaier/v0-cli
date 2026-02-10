@@ -181,16 +181,24 @@ One pass. Build outward from working code.
    - `v0 unlink` — remove `.v0` ✓
 5. Set up `bin` in package.json: `"bin": { "v0": "./src/index.ts" }` ✓
 
-### Phase 2: Test and Fix
+### Phase 2: Test and Fix ✓
 
 Manual smoke test of every command. Fix what breaks.
 
-1. Test auth flow: login → whoami → logout → whoami (should error)
-2. Test chat lifecycle: create → list → open → delete
-3. Test chat init with a few files
-4. Test link/unlink + project ID injection on chat create
-5. Test error cases: no auth, invalid chat ID, empty file list
-6. Test `--json` on list/create/whoami
+1. Test auth flow: login → whoami → logout → whoami (should error) ✓
+2. Test chat lifecycle: create → list → open → delete ✓
+3. Test chat init with a few files ✓
+4. Test link/unlink + project ID injection on chat create ✓
+5. Test error cases: no auth, invalid chat ID, empty file list ✓
+6. Test `--json` on list/create/whoami ✓
+
+**Bugs fixed:**
+- Chat list response structure (data array)
+- Field names: favorite/privacy instead of isFavorite/isPrivate
+- Delete method signature: { chatId } not chatId
+- Chat init: added type:'files' and name fields
+- SendMessage signature: { chatId, message }
+- Projects.getById signature: { projectId }
 
 ## Dependencies
 
